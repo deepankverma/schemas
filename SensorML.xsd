@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+	targetNamespace="http://www.someserver.example.com/myns/SensorML"
+	xmlns:tns="http://www.someserver.example.com/myns/SensorML"
+	elementFormDefault="qualified"
+	xmlns:sml="http://www.opengis.net/sensorml/2.0"
+	xmlns:swe="http://www.opengis.net/swe/2.0"
+	xmlns:gml="http://www.opengis.net/gml/3.2">
+
+
+
+	<import
+		schemaLocation="http://schemas.opengis.net/sensorML/2.0/sensorML.xsd"
+		namespace="http://www.opengis.net/sensorml/2.0">
+	</import>
+	<import
+		schemaLocation="http://schemas.opengis.net/sweCommon/2.0/swe.xsd"
+		namespace="http://www.opengis.net/swe/2.0">
+	</import>
+	<import schemaLocation="http://schemas.opengis.net/gml/3.2.1/gml.xsd" namespace="http://www.opengis.net/gml/3.2"></import>
+	<element name="description" type="tns:new"></element>
+
+
+
+
+	<complexType name="new">
+		<sequence>
+			<element name="description" type="string"></element>
+			<element name="identifiers"
+				type="gml:IdentifiedObjectType">
+			</element>
+			<element name="NewElement" type="string"></element>
+			<element name="classification" type="string"></element>
+			<element name="validTime" type="string"></element>
+			<element name="securityConstraints" type="string"></element>
+			<element name="legalConstraints" type="string"></element>
+			<element name="characterstics" type="string"></element>
+			<element name="capabilities" type="string"></element>
+			<element name="contacts" type="string"></element>
+			<element name="documentation" type="string"></element>
+			<element name="inputs" type="string"></element>
+			<element name="outputs" type="string"></element>
+			<element name="parameters" type="string"></element>
+		</sequence>
+	</complexType>
+
+</schema>

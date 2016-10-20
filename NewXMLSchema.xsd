@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+	targetNamespace="http://www.someserver.example.com/myns/NewXMLSchema"
+	xmlns:tns="http://www.someserver.example.com/myns/NewXMLSchema"
+	elementFormDefault="qualified"
+	xmlns:Q1="http://www.opengis.net/gml/3.2"
+	xmlns:sml="http://www.opengis.net/sensorml/2.0">
+	<import namespace="http://www.opengis.net/gml/3.2"
+		schemaLocation="http://schemas.opengis.net/gml/3.2.1/gml.xsd" />
+	<import schemaLocation="http://schemas.opengis.net/sensorML/2.0/sensorML.xsd" namespace="http://www.opengis.net/sensorml/2.0"></import>
+	<element name="Buildings" type="tns:BuildingsType"></element>
+	<complexType name="BuildingsType">
+		<sequence>
+			<element name="PlotBoundary" type="Q1:SurfacePropertyType"
+				maxOccurs="1" minOccurs="1">
+			</element>
+			<element name="BuildingFootprint"
+				type="Q1:SurfacePropertyType" maxOccurs="1" minOccurs="1">
+			</element>
+			<element name="NoOfFloors" maxOccurs="1" minOccurs="1">
+				<simpleType>
+					<restriction base="integer">
+						<minInclusive value="1"></minInclusive>
+					</restriction>
+				</simpleType>
+			</element>
+			<element name="Basement" maxOccurs="1" minOccurs="1">
+				<simpleType>
+					<restriction base="string">
+						<minLength value="2"></minLength>
+						<maxLength value="3"></maxLength>
+						<enumeration value="Yes"></enumeration>
+						<enumeration value="No"></enumeration>
+					</restriction>
+				</simpleType>
+			</element>
+			<element name="HeightOfBuilding" maxOccurs="1"
+				minOccurs="1">
+				<simpleType>
+					<restriction base="int">
+						<minInclusive value="2"></minInclusive>
+					</restriction>
+				</simpleType>
+			</element>
+			<element name="YearofEstablishment" maxOccurs="1"
+				minOccurs="1">
+				<simpleType>
+					<restriction base="integer">
+						<maxInclusive value="2016"></maxInclusive>
+						<minInclusive value="1800"></minInclusive>
+					</restriction>
+				</simpleType>
+			</element>
+			<element name="NoOfHouseholds" maxOccurs="1"
+				minOccurs="1">
+				<simpleType>
+					<restriction base="integer">
+						<minInclusive value="0"></minInclusive>
+					</restriction>
+				</simpleType>
+			</element>
+			<element name="BuildingUse" maxOccurs="1" minOccurs="1">
+				<simpleType>
+					<restriction base="string">
+						<enumeration value="Residential"></enumeration>
+						<enumeration value="Commercial"></enumeration>
+						<enumeration value="Industrial"></enumeration>
+						<enumeration value="PublicInstitutions"></enumeration>
+						<enumeration value="AcademicInstitutions"></enumeration>
+						<enumeration value="ServicesUtilities"></enumeration>
+						<enumeration value="ParksPlaygrounds"></enumeration>
+						<enumeration value="UnderConstruction"></enumeration>
+					</restriction>
+				</simpleType>
+			</element>
+			<element name="AccessToElectricity" maxOccurs="1"
+				minOccurs="1">
+				<simpleType>
+					<restriction base="string">
+						<minLength value="2"></minLength>
+						<maxLength value="3"></maxLength>
+						<enumeration value="Yes"></enumeration>
+						<enumeration value="No"></enumeration>
+					</restriction>
+				</simpleType>
+			</element>
+			<element name="ConnectivityToSewerSys" maxOccurs="1"
+				minOccurs="1">
+				<simpleType>
+					<restriction base="string">
+						<minLength value="2"></minLength>
+						<maxLength value="3"></maxLength>
+						<enumeration value="Yes"></enumeration>
+						<enumeration value="No"></enumeration>
+					</restriction>
+				</simpleType>
+			</element>
+			<element name="ConnectivityToWaterSupply" maxOccurs="1"
+				minOccurs="1">
+				<simpleType>
+					<restriction base="string">
+						<minLength value="2"></minLength>
+						<maxLength value="3"></maxLength>
+						<enumeration value="Yes"></enumeration>
+						<enumeration value="No"></enumeration>
+					</restriction>
+				</simpleType>
+			</element>
+			<element name="RoofArea">
+				<simpleType>
+					<restriction base="float">
+						<minExclusive value="0"></minExclusive>
+					</restriction>
+				</simpleType>
+			</element>
+			<element name="RoadWidthInFront">
+				<simpleType>
+					<restriction base="float">
+						<minExclusive value="0"></minExclusive>
+					</restriction>
+				</simpleType>
+			</element>
+		</sequence>
+	</complexType>
+
+
+	<element name="Roads" type="tns:RoadType"></element>
+
+	<complexType name="RoadType">
+		<sequence>
+			<element name="NameOfRoad">
+				<simpleType>
+					<restriction base="string">
+						<maxLength value="50"></maxLength>
+					</restriction>
+				</simpleType>
+			</element>
+			<element name="NoOfLanes">
+				<simpleType>
+					<restriction base="integer">
+						<minInclusive value="1"></minInclusive>
+					</restriction>
+				</simpleType>
+			</element>
+			<element name="No.OfWays">
+				<simpleType>
+					<restriction base="integer">
+						<minInclusive value="1"></minInclusive>
+						<maxInclusive value="2"></maxInclusive>
+					</restriction>
+				</simpleType>
+			</element>
+			<element name="WidthOfRoad" type="float"></element>
+			<element name="TypeOfRoad">
+				<simpleType>
+					<restriction base="string">
+						<minLength value="5"></minLength>
+						<maxLength value="11"></maxLength>
+						<enumeration value="Arterial"></enumeration>
+						<enumeration value="Sub-Arterial"></enumeration>
+						<enumeration value="Collector"></enumeration>
+						<enumeration value="Local"></enumeration>
+					</restriction>
+				</simpleType>
+			</element>
+		</sequence>
+	</complexType>
+</schema>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sml:description xmlns:sml="http://www.someserver.example.com/myns/SensorML" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.someserver.example.com/myns/SensorML SensorML.xsd ">
+  <sml:identifiers>sml:identifiers</sml:identifiers>
+  <sml:classification>sml:classification</sml:classification>
+  <sml:validTime>sml:validTime</sml:validTime>
+  <sml:securityConstraints>sml:securityConstraints</sml:securityConstraints>
+  <sml:legalConstraints>sml:legalConstraints</sml:legalConstraints>
+  <sml:characterstics>sml:characterstics</sml:characterstics>
+  <sml:capabilities>sml:capabilities</sml:capabilities>
+  <sml:contacts>sml:contacts</sml:contacts>
+  <sml:documentation>sml:documentation</sml:documentation>
+  <sml:inputs>sml:inputs</sml:inputs>
+  <sml:outputs>sml:outputs</sml:outputs>
+  <sml:parameters>sml:parameters</sml:parameters>
+</sml:description>

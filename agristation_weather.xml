@@ -1,0 +1,466 @@
+<SensorML xmlns="http://www.opengis.net/sensorML"
+  xmlns:swe="http://www.opengis.net/swe"
+ xmlns:gml="http://www.opengis.net/gml"
+ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ xmlns:xlink="http://www.w3.org/1999/xlink"
+ xsi:schemaLocation="http://www.opengis.net/sensorML
+ http://vast.uah.edu/schemas/sensorML/1.0.30/base/sensorML.xsd"
+ version="1.0">
+ <System id="DAVIS_SIMPLE_STATION">
+ <!--============================-->
+ <!-- Station Discovery Metadata -->
+ <!--============================-->
+ <description>
+ <swe:Discussion>
+ Simple Weather Station measuring temperature, pressure,
+ wind and rain fall</swe:Discussion>
+ </description>
+ <identification>
+ <IdentifierList>
+ <identifier name="longName">
+ <Term qualifier="urn:ogc:def:identifier:longName">
+ Davis Weather Monitor II Station</Term>
+ </identifier>
+ <identifier name="shortName">
+ <Term qualifier="urn:ogc:def:identifier:shortName">
+ Davis Weather Station</Term>
+ </identifier>
+ <identifier name="modelNumber">
+ <Term qualifier="urn:ogc:def:identifier:modelNumber">7440</Term>
+ </identifier>
+ <identifier name="manufacturer">
+ <Term qualifier="urn:ogc:def:identifier:manufacturer">
+ Davis Instruments</Term>
+ </identifier>
+ </IdentifierList>
+ </identification>
+ <classification>
+ <ClassifierList>
+ <classifier name="intendedApplication">
+ <Term qualifier="urn:ogc:def:classifier:application">weather</Term>
+ </classifier>
+ <classifier name="sensorType">
+ <Term qualifier="urn:ogc:def:classifier:sensorType">thermometer</Term>
+ </classifier>
+ <classifier name="sensorType">
+ <Term qualifier="urn:ogc:def:classifier:sensorType">barometer</Term>
+ </classifier>
+ <classifier name="sensorType">
+ <Term qualifier="urn:ogc:def:classifier:sensorType">anemometer</Term>
+ </classifier>
+ <classifier name="sensorType">
+ <Term qualifier="urn:ogc:def:classifier:sensorType">rain gauge</Term>
+ </classifier>
+ </ClassifierList>
+ </classification>
+ <validTime>
+ <StartTime>2005-01-01</StartTime>
+ <EndTime>currentTime</EndTime>
+ </validTime>
+ <contact role="urn:ogc:def:identifier:manufacturer">
+ <ResponsibleParty>
+ <organizationName>Davis Instruments</organizationName>
+ <contactInfo>
+ <phone>
+ <voice>+01-510-732-9229</voice>
+ <facsimile>+01-510-732-9188</facsimile>
+ </phone>
+ <address>
+ <deliveryPoint>3465, Diablo Avenue</deliveryPoint>
+ <city>Hayward</city>
+ <administrativeArea>CA</administrativeArea>
+ <postalCode>94545-2778</postalCode>
+ <country>USA</country>
+ <electronicMailAddress>sales@davisnet.com</electronicMailAddress>
+ </address>
+ </contactInfo>
+ </ResponsibleParty>
+ </contact>
+ <documentation role="documents">
+ <DocumentList>
+ <member name="userManual">
+ <Document>
+ <description>
+ <swe:Discussion>Davis Weather Monitor Manual</swe:Discussion>
+ </description>
+ <fileLocation
+ xlink:href="htp://www.davisnet.com/support/manuals/7440.pdf"/>
+ </Document>
+ </member>
+ </DocumentList>
+ </documentation>
+ <!--==========================-->
+ <!-- Station Coordinate Frame -->
+ <!--==========================-->
+ <referenceFrame>
+ <gml:EngineeringCRS gml:id="STATION_FRAME">
+ <gml:srsName>Weather Station Spatial Frame</gml:srsName>
+ <gml:usesCS xlink:href="urn:ogc:def:cs:xyzFrame"/>
+ <gml:usesEngineeringDatum>
+ <gml:EngineeringDatum gml:id="STATION_DATUM">
+ <gml:datumName>Weather Station Spatial Datum</gml:datumName>
+ <gml:anchorPoint>
+ Origin is at the base of the mounting.
+ Z is along the axis of the mounting pole - typically vertical.
+ X and Y are orthogonal to Z but undetermined.
+ </gml:anchorPoint>
+ </gml:EngineeringDatum>
+ </gml:usesEngineeringDatum>
+ </gml:EngineeringCRS>
+ </referenceFrame>
+ <!--================-->
+ <!-- Station Inputs -->
+ <!--================-->
+ <inputs>
+ <InputList>
+ <input name="ambiantTemperature">
+ <swe:Quantity definition="urn:ogc:def:phenomenon:temperature"/>
+ </input>
+ <input name="atmosphericPressure">
+ <swe:Quantity definition="urn:ogc:def:phenomenon:pressure"/>
+ </input>
+ <input name="windSpeed">
+ <swe:Quantity definition="urn:ogc:def:phenomenon:windSpeed"/>
+ </input>
+ <input name="windDirection">
+ <swe:Quantity definition="urn:ogc:def:phenomenon:windDirection"/>
+ </input>
+ <input name="rainFall">
+ <swe:Quantity definition="urn:ogc:def:phenomenon:rainFall"/>
+ </input>
+ </InputList>
+ </inputs>
+ <!--=================-->
+ <!-- Station Outputs -->
+ <!--=================-->
+ <outputs>
+ <OutputList>
+ <output name="weatherMeasurements">
+ <swe:DataGroup>
+ <swe:component name="time">
+ <swe:Time definition="urn:ogc:def:phenomenon:time"
+  uom="urn:ogc:def:unit:iso8601"/>
+ </swe:component>
+ <swe:component name="temperature">
+ <swe:Quantity definition="urn:ogc:def:phenomenon:temperature"
+  uom="urn:ogc:def:unit:celsius"/>
+ </swe:component>
+ <swe:component name="barometricPressure">
+ <swe:Quantity definition="urn:ogc:def:phenomenon:pressure"
+ uom="urn:ogc:def:unit:bar" scale="1e-3"/>
+ </swe:component>
+ <swe:component name="windSpeed">
+ <swe:Quantity definition="urn:ogc:def:phenomenon:windSpeed"
+ uom="urn:ogc:def:unit:meterPerSecond"/>
+ </swe:component>
+ <swe:component name="windDirection">
+ <swe:Quantity definition="urn:ogc:def:phenomenon:windDirection"
+ uom="urn:ogc:def:unit:degree"/>
+ </swe:component>
+ <swe:component name="rainFall">
+ <swe:Quantity definition="urn:ogc:def:phenomenon:rainfall"
+ uom="urn:ogc:def:unit:meter" scale="1e-3"/>
+ </swe:component>
+ </swe:DataGroup>
+ </output>
+ </OutputList>
+ </outputs>
+ <!--=======================-->
+ <!-- Station Detector List -->
+ <!--=======================-->
+ <processes>
+ <ProcessList>
+ <process name="clock"
+ xlink:href="urn:vast:sensor:davisClock:1.0:001"/>
+ <process name="thermometer"
+ xlink:href="urn:vast:sensor:davisTemperature:1.0:001"/>
+ <process name="barometer"
+ xlink:href="urn:vast:sensor:davisPressure:1.0:001"/>
+ <process name="anemometer"
+ xlink:href="urn:vast:sensor:davisWindSpeed:1.0:001"/>
+ <process name=" windDirectionDetector "
+ xlink:href="urn:vast:sensor:davisWindDirection:1.0:001"/>
+ <process name="rainGauge"
+ xlink:href="urn:vast:sensor:davisRainFall:1.0:001"/>
+ </ProcessList>
+ </processes>
+ <!--==============================-->
+ <!-- Station Internal Connections -->
+ <!--==============================-->
+ <connections>
+ <ConnectionList>
+ <connection name="inputToThermometer">
+ <Link>
+ <source ref="this/inputs/ambiantTemperature"/>
+ <destination ref="thermometer/inputs/temperature"/>
+ </Link>
+ </connection>
+ <connection name="thermometerToOutput">
+ <Link>
+ <source ref="thermometer/outputs/measuredTemperature"/>
+ <destination ref="this/outputs/weatherMeasurements/temperature"/>
+ </Link>
+ </connection>
+ <connection name="inputToBarometer">
+ <Link>
+  <source ref="this/inputs/atmosphericPressure"/>
+  <destination ref="barometer/inputs/barometricPressure"/>
+ </Link>
+ </connection>
+ <connection name="barometerToOutput">
+ <Link>
+  <source ref="barometer/outputs/measuredBarometricPressure"/>
+  <destination ref="this/outputs/weatherMeasurements/barometricPressure"/>
+ </Link>
+ </connection>
+ <connection name="inputToAnemometer">
+ <Link>
+  <source ref="this/inputs/windSpeed"/>
+  <destination ref="anemometer/inputs/windSpeed"/>
+ </Link>
+ </connection>
+ <connection name="anemometerToOutput">
+ <Link>
+  <source ref="anemometer/outputs/measuredWindSpeed"/>
+  <destination ref="this/outputs/weatherMeasurements/windSpeed"/>
+ </Link>
+ </connection>
+ <connection name="inputToWindDirection">
+ <Link>
+  <source ref="this/inputs/windDirection"/>
+  <destination ref="windDirectionDetector/inputs/windDirection"/>
+ </Link>
+ </connection>
+ <connection name="windDirectionToOutput">
+ <Link>
+  <source ref="windDirectionDetector/outputs/measuredWindDirection"/>
+  <destination ref="this/outputs/weatherMeasurements/windDirection"/>
+ </Link>
+ </connection>
+ <connection name="inputToRainGauge">
+ <Link>
+  <source ref="this/inputs/rainFall"/>
+  <destination ref="rainGauge/inputs/rainFall"/>
+ </Link>
+ </connection>
+ <connection name="rainGaugeToOutput">
+ <Link>
+  <source ref="rainGauge/outputs/measuredRainFall"/>
+  <destination ref="this/outputs/weatherMeasurements/rainFall"/>
+ </Link>
+ </connection>
+ <connection name="clockToOutput">
+ <Link>
+  <source ref="clock/outputs/measuredTime"/>
+  <destination ref="this/outputs/weatherMeasurements/time"/>
+ </Link>
+ </connection>
+ </ConnectionList>
+ </connections>
+ <!--======================-->
+ <!-- Components Positions -->
+ <!--======================-->
+ <positions>
+ <PositionList>
+ <!--=================================-->
+ <!-- Position of Station in EPSG4329 -->
+ <!--=================================-->
+ <position name="stationPosition">
+ <swe:Position localFrame="#STATION_FRAME"
+  referenceFrame="urn:ogc:def:crs:EPSG:4329">
+  <swe:location>
+  <swe:Location definition="urn:ogc:def:phenomenon:location">
+  <swe:coordinate name="latitude">
+  <swe:Quantity definition="urn:ogc:def:phenomenon:latitude"
+ uom="urn:ogc:def:unit:degree">34.72450</swe:Quantity>
+  </swe:coordinate>
+  <swe:coordinate name="longitude">
+  <swe:Quantity definition="urn:ogc:def:phenomenon:longitude"
+ uom="urn:ogc:def:unit:degree">-86.94533</swe:Quantity>
+  </swe:coordinate>
+  <swe:coordinate name="altitude">
+  <swe:Quantity definition="urn:ogc:def:phenomenon:altitude"
+  uom="urn:ogc:def:unit:meter">20.1169</swe:Quantity>
+  </swe:coordinate>
+  </swe:Location>
+  </swe:location>
+  <swe:orientation>
+  <swe:Orientation definition="urn:ogc:def:phenomenon:orientation">
+  <swe:coordinate name="trueHeading">
+  <swe:Quantity definition="urn:ogc:def:phenomenon:angleToNorth"
+ axisCode="Z" uom="urn:ogc:def:unit:degree">87.0</swe:Quantity>
+  </swe:coordinate>
+  </swe:Orientation>
+  </swe:orientation>
+ </swe:Position>
+ </position>
+ <!--============================================-->
+ <!-- Position of Barometer in Station Ref Frame -->
+ <!--============================================-->
+ <position name="barometerPosition">
+ <swe:Position localFrame="#BAROMETER_FRAME"
+  referenceFrame="#STATION_FRAME">
+ <swe:location>
+  <swe:Location definition="urn:ogc:def:phenomenon:location">
+  <swe:coordinate name="x">
+  <swe:Quantity definition="urn:ogc:def:phenomenon:distance"
+ axisCode="X" uom="urn:ogc:def:unit:meter">0.0</swe:Quantity>
+  </swe:coordinate>
+  <swe:coordinate name="y">
+  <swe:Quantity definition="urn:ogc:def:phenomenon:distance"
+ axisCode="Y" uom="urn:ogc:def:unit:meter">0.0</swe:Quantity>
+  </swe:coordinate>
+  <swe:coordinate name="z">
+  <swe:Quantity definition="urn:ogc:def:phenomenon:distance"
+ axisCode="Z" uom="urn:ogc:def:unit:meter">0.0</swe:Quantity>
+  </swe:coordinate>
+  </swe:Location>
+  </swe:location>
+ </swe:Position>
+ </position>
+ <!--==============================================-->
+ <!-- Position of Thermometer in Station Ref Frame -->
+ <!--==============================================-->
+ <position name="thermometerPosition">
+ <swe:Position localFrame="#THERMOMETER_FRAME"
+  referenceFrame="#STATION_FRAME">
+ <swe:location>
+  <swe:Location definition="urn:ogc:def:phenomenon:location">
+  <swe:coordinate name="x">
+  <swe:Quantity definition="urn:ogc:def:phenomenon:distance"
+ axisCode="X" uom="urn:ogc:def:unit:meter">0.0</swe:Quantity>
+  </swe:coordinate>
+  <swe:coordinate name="y">
+  <swe:Quantity definition="urn:ogc:def:phenomenon:distance"
+ axisCode="Y" uom="urn:ogc:def:unit:meter">0.02</swe:Quantity>
+  </swe:coordinate>
+  <swe:coordinate name="z">
+  <swe:Quantity definition="urn:ogc:def:phenomenon:distance"
+ axisCode="Z" uom="urn:ogc:def:unit:meter">1.1</swe:Quantity>
+  </swe:coordinate>
+  </swe:Location>
+  </swe:location>
+ </swe:Position>
+ </position>
+ <!--=============================================-->
+ <!-- Position of Anemometer in Station Ref Frame -->
+ <!--=============================================-->
+ <position name="anemometerPosition">
+ <swe:Position localFrame="#ANEMOMETER_FRAME"
+  referenceFrame="#STATION_FRAME">
+  <swe:location>
+  <swe:Location definition="urn:ogc:def:phenomenon:location">
+  <swe:coordinate name="x">
+  <swe:Quantity definition="urn:ogc:def:phenomenon:distance"
+ axisCode="X" uom="urn:ogc:def:unit:meter">0.0</swe:Quantity>
+  </swe:coordinate>
+  <swe:coordinate name="y">
+  <swe:Quantity definition="urn:ogc:def:phenomenon:distance"
+ axisCode="Y" uom="urn:ogc:def:unit:meter">-0.1</swe:Quantity>
+  </swe:coordinate>
+  <swe:coordinate name="z">
+  <swe:Quantity definition="urn:ogc:def:phenomenon:distance"
+ axisCode="Z" uom="urn:ogc:def:unit:meter">2.0</swe:Quantity>
+  </swe:coordinate>
+  </swe:Location>
+  </swe:location>
+ </swe:Position>
+ </position>
+ <!--==========================================================-->
+ <!-- Position of Wind Direction Detector in Station Ref Frame -->
+ <!--==========================================================-->
+ <position name="windDirectionDetectorPosition">
+ <swe:Position localFrame="#WIND_DIRECTION_DETECTOR_FRAME"
+  referenceFrame="#STATION_FRAME">
+  <swe:location>
+  <swe:Location definition="urn:ogc:def:phenomenon:location">
+  <swe:coordinate name="x">
+  <swe:Quantity definition="urn:ogc:def:phenomenon:distance"
+  axisCode="X" uom="urn:ogc:def:unit:meter">0.0</swe:Quantity>
+  </swe:coordinate>
+  <swe:coordinate name="y">
+  <swe:Quantity definition="urn:ogc:def:phenomenon:distance"
+ axisCode="Y" uom="urn:ogc:def:unit:meter">-0.1</swe:Quantity>
+  </swe:coordinate>
+  <swe:coordinate name="z">
+  <swe:Quantity definition="urn:ogc:def:phenomenon:distance"
+ axisCode="Z" uom="urn:ogc:def:unit:meter">2.0</swe:Quantity>
+  </swe:coordinate>
+  </swe:Location>
+  </swe:location>
+  <swe:orientation>
+  <swe:Orientation definition="urn:ogc:def:phenomenon:orientation">
+  <swe:coordinate name="z">
+  <swe:Quantity definition="urn:ogc:def:phenomenon:angle"
+ axisCode="Z" uom="urn:ogc:def:unit:degree">-87.0</swe:Quantity>
+  </swe:coordinate>
+  </swe:Orientation>
+  </swe:orientation>
+ </swe:Position>
+ </position>
+ <!--=============================================-->
+ <!-- Position of Rain Gauge in Station Ref Frame -->
+ <!--=============================================-->
+ <position name="rainGaugePosition">
+ <swe:Position localFrame="#RAIN_GAUGE_FRAME"
+  referenceFrame="#STATION_FRAME">
+  <swe:location>
+  <swe:Location definition="urn:ogc:def:phenomenon:location">
+  <swe:coordinate name="x">
+  <swe:Quantity definition="urn:ogc:def:phenomenon:distance"
+  axisCode="X" uom="urn:ogc:def:unit:meter">0.0</swe:Quantity>
+  </swe:coordinate>
+  <swe:coordinate name="y">
+  <swe:Quantity definition="urn:ogc:def:phenomenon:distance"
+ axisCode="Y" uom="urn:ogc:def:unit:meter">0.6</swe:Quantity>
+  </swe:coordinate>
+  <swe:coordinate name="z">
+  <swe:Quantity definition="urn:ogc:def:phenomenon:distance"
+ axisCode="Z" uom="urn:ogc:def:unit:meter">0.0</swe:Quantity>
+  </swe:coordinate>
+  </swe:Location>
+  </swe:location>
+ </swe:Position>
+ </position>
+ </PositionList>
+ </positions>
+ <!--=================================-->
+ <!-- System Communication Interfaces -->
+ <!--=================================-->
+ <interfaces>
+ <InterfaceList>
+ <interface name="serial">
+ <InterfaceDefinition>
+  <!-- http://www.interfacebus.com/Design_Connector_RS232.html -->
+  <applicationLayer>
+  <Protocol definition="urn:davis:def:protocol:weatherLink"/>
+  </applicationLayer>
+  <physicalLayer>
+  <Protocol definition="urn:ogc:def:protocol:RS232">
+  <property name="num-bits">
+  <swe:Count>8</swe:Count>
+  </property>
+  <property name="parity">
+  <swe:Boolean>false</swe:Boolean>
+  </property>
+  </Protocol>
+  </physicalLayer>
+  <mechanicalLayer>
+  <Connector definition="urn:ogc:def:connector:DB9">
+  <property name="pin-out">
+  <swe:Category definition="urn:ogc:def:pinout">EIA574</swe:Category>
+  </property>
+  </Connector>
+  </mechanicalLayer>
+ </InterfaceDefinition>
+ </interface>
+ <connection>
+ <Link>
+ <source ref="this/outputs/weatherMeasurements"/>
+ <destination ref="serial"/>
+ </Link>
+ </connection>
+ </InterfaceList>
+ </interfaces>
+ </System>
+</SensorML>
