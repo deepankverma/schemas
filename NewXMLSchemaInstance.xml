@@ -5,12 +5,11 @@
     xmlns:gsr="http://www.isotc211.org/2005/gsr" 
     xmlns:gss="http://www.isotc211.org/2005/gss" 
     xmlns:gts="http://www.isotc211.org/2005/gts" 
-    xmlns:tns="http://www.someserver.example.com/myns/NewXMLSchema" 
+    xmlns:tns="https://raw.githubusercontent.com/deepankverma/schemas/master/NewXMLSchema.xsd" 
     xmlns:xlink="http://www.w3.org/1999/xlink" 
     xmlns:xml="http://www.w3.org/XML/1998/namespace" 
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
-    xsi:schemaLocation="http://www.someserver.example.com/
-    myns/NewXMLSchema NewXMLSchema.xsd ">
+    xsi:schemaLocation="https://raw.githubusercontent.com/deepankverma/schemas/master/NewXMLSchema.xsd ">
   <tns:PlotBoundary gml:remoteSchema="http://tempuri.org" 
       nilReason="inapplicable" owns="false" 
       xlink:actuate="onLoad" xlink:arcrole="http://tempuri.org" 
