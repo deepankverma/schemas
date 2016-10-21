@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--Modified by Ram Kumar (MSI) on 24 July 2002-->
-<xs:schema targetNamespace="urn:oasis:names:tc:ciq:xsdschema:xAL:2.0" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="urn:oasis:names:tc:ciq:xsdschema:xAL:2.0" elementFormDefault="qualified">
+<xs:schema targetNamespace="https://raw.githubusercontent.com/deepankverma/schemas/master/xAL.xsd" xmlns:xs="https://raw.githubusercontent.com/deepankverma/schemas/master/xAL.xsd" elementFormDefault="qualified">
 	<xs:annotation>
 		<xs:documentation>xAL: eXtensible Address Language 
 This is an XML document type definition (DTD) for
